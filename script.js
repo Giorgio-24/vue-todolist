@@ -21,5 +21,8 @@ var root = new Vue(
                 }
                 this.newTask = "";
             },
+            deleteTask(i) {
+                this.dailyTasks.splice(i, 1)
+            },
         },
     });

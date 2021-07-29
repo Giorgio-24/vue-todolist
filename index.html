@@ -29,7 +29,9 @@
                         v-for="(task, index) in dailyTasks">
                         <input class="form-check-input" type="checkbox" value="" aria-label="...">
                         {{ task }}
-                        <button type="button" class="btn-close" aria-label="Close"><i class="fas fa-times"></i></button>
+                        <button type="button" class="btn-close" aria-label="Close" @click="deleteTask(index)">
+                            <i class="fas fa-times"></i>
+                        </button>
                     </li>
                 </ul>
             </div>
