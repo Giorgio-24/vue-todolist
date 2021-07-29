@@ -20,8 +20,8 @@
                 <h1 class="">To do list:</h1>
             </div>
             <div class="w-25 align-self-center d-flex justify-content-center">
-                <input type="text" placeholder="Add new task to the list">
-                <input class="btn btn-primary" type="button" value="Add">
+                <input type="text" placeholder="Add new task to the list" v-model="newTask">
+                <input class="btn btn-primary" type="button" value="Add" @click="addNewTask">
             </div>
             <div class="w-50 align-self-center d-flex">
                 <ul class="list-group w-100 py-5">

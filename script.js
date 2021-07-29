@@ -11,6 +11,15 @@ var root = new Vue(
                 'Get dressed',
 
             ],
+            newTask: '',
 
-        }
+        },
+        methods: {
+            addNewTask() {
+                if (this.newTask.trim() !== "") {
+                    this.dailyTasks.push(this.newTask);
+                }
+                this.newTask = "";
+            },
+        },
     });
