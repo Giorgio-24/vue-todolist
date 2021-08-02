@@ -1,8 +1,40 @@
+
+body{
+    background-image: url(https://hips.hearstapps.com/cit.h-cdn.co/assets/17/40/1507300007-phi-phi-island-info-mare-thailandia.jpg);
+    background-repeat: repeat-y;
+    background-size: 100%;
+}
+
 button{
-    background-color: #fff;
     border: 0px;
+    background-color: rgba(0,0,0,0.3);
 }
 
 .padding-list{
     padding-left: 35px;
+}
+
+li.task{
+    background-color: rgba(0,0,0,0.3);
+    border: 3px solid black;
+}
+
+.color-light-green{
+    color: #01ff20;
+}
+
+.bg-color-red{
+    background-color: #be1823;
+}
+
+.bg-light-black{
+    background-color: rgba(0,0,0,0.3);
+}
+
+.bg-light-grey{
+    background-color: #e9ecef;
+}
+
+.bg-green{
+    background-color: rgba(0,255,0,0.3);
 }

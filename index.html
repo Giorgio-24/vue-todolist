@@ -6,35 +6,62 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>To do list</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.2/css/all.css">
+
     <link rel="stylesheet" href="./style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 </head>
+showMe
 
 <body>
-    <div id="root">
+    <div id="root" class="w-100">
         <div class="d-flex flex-column text-center justify-content-center">
             <div class="py-5">
-                <h1 class="">To do list:</h1>
+                <h1 class="text-white text-uppercase">To do list:</h1>
             </div>
+            <!--^ ADD TASKS -->
             <div class="w-25 align-self-center d-flex justify-content-center">
-                <input type="text" placeholder="Add new task to the list" v-model="newTask">
-                <input class="btn btn-primary" type="button" value="Add" @click="addNewTask">
+                <button class="text-white bg-light-grey rounded" @click="toggleFilter" v-if="!isFilterVisible"><i
+                        class="fas fa-search text-dark"></i></button>
+                <input type="text" placeholder="Add new task to the list" v-model="newTask" @keyup.enter="addNewTask"
+                    @keyup.esc="emptyContent">
+                <button class="text-white bg-secondary rounded" @click="emptyContent"><i
+                        class="fas fa-redo-alt"></i></button>
+                <input class="btn btn-info" type="button" value="Add" @click="addNewTask">
             </div>
+            <!--^ FILTER -->
+            <div class="input-group flex-nowrap mt-5 w-50 d-flex justify-content-center align-self-center"
+                v-if="isFilterVisible">
+                <span @click="toggleFilter" class="input-group-text bg-danger border-0 text-white"><i
+                        class="fas fa-times"></i></span>
+                <input type="text" class="form-control" placeholder="Search task.." aria-label="Username"
+                    aria-describedby="addon-wrapping" v-model="searchTerm" @keyup.esc="toggleFilter">
+                <span class="input-group-text"><i class="fas fa-search"></i></span>
+            </div>
+            <!--^ TASKS LIST -->
             <div class="w-50 align-self-center d-flex">
                 <ul class="list-group w-100 py-5">
-                    <li class="padding-list list-group-item d-flex justify-content-between"
-                        v-for="(task, index) in dailyTasks">
-                        <input class="form-check-input" type="checkbox" value="" aria-label="...">
-                        {{ task }}
+                    <li class="text-white task padding-list list-group-item d-flex justify-content-between"
+                        v-for="(task, index) in dailyTasks" v-if="showMe(task.text)">
+                        <input class="form-check-input text-white" type="checkbox" value="" aria-label="...">
+                        {{ index+1 }}) {{ task.text }}.
+                        <!-- 
+                        <span class="text-uppercase font-weight-bold color-light-green">Task done <i
+                                class="fas fa-check"></i></span> -->
                         <button type="button" class="btn-close" aria-label="Close" @click="deleteTask(index)">
-                            <i class="fas fa-times"></i>
+                            <i class="fas fa-times text-white"></i>
                         </button>
                     </li>
                 </ul>
             </div>
+        </div>
+        <!--^ TASKS DONE/UNDONE COUNTER -->
+        <div class="text-white text-center h4">
+            <div class="d-inline-block mx-5 bg-light-black">Accomplished tasks number: {{ accomplishedTasksNumber }}.
+            </div>
+            <div class="d-inline-block bg-light-black">Unaccomplished tasks number: {{ dailyTasks.length }}.</div>
         </div>
     </div>
     <script src="./script.js"></script>
