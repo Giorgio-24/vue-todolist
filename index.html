@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="./style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
 </head>
-showMe
 
 <body>
     <div id="root" class="w-100 ">
@@ -43,7 +42,7 @@ showMe
             <!--^ TASKS LIST -->
             <div class="w-50 align-self-center d-flex" v-if="dailyTasks.length">
                 <ul class="list-group w-100 my-5">
-                    <!--? v-on:dbclick PER METTERE IL COLORE VERDE E LA SCRITTA CON IL DOPPIO CLICK SUL LI -->
+                    <!--? v-on:dblclick PER METTERE IL COLORE VERDE E LA SCRITTA CON IL DOPPIO CLICK SUL LI -->
                     <li class=" bg-light-black text-white task padding-list list-group-item d-flex justify-content-between align-items-center single-task"
                         @dblclick="taskStatus(index)" :class="isDone(index) ? 'done' : ''"
                         v-for="(task, index) in dailyTasks" v-if="showMe(task.text)">
