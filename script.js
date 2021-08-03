@@ -20,7 +20,7 @@ var root = new Vue(
         methods: {
             addNewTask() {
                 this.newTask.trim() !== "" ? this.dailyTasks.push({ text: this.newTask, done: false, }) : alert(`YOU CANNOT ADD AN EMPTY TASK TO THE LIST.
-                Please try again.`);
+Please try again.`);
                 this.newTask = "";
             },
             deleteTask(i) {
@@ -39,7 +39,7 @@ var root = new Vue(
             toggleFilter() {
                 this.isFilterVisible = !this.isFilterVisible;
                 this.searchTerm = '';
-            },/* 
+            },
             taskStatus(index) {
                 const taskStatus = this.dailyTasks.map((task, taskIndex) => {
                     if (taskIndex === index) {
@@ -47,9 +47,10 @@ var root = new Vue(
                     }
                     return task;
                 });
-                this.dailyTasks = updatedTasks;
             },
-            status */
+            isDone(index) {
+                return this.dailyTasks[index].done;
+            },
 
         },
     });

@@ -16,15 +16,15 @@
 showMe
 
 <body>
-    <div id="root" class="w-100">
+    <div id="root" class="w-100 ">
         <div class="d-flex flex-column text-center justify-content-center">
-            <div class="py-5">
+            <div class="my-5">
                 <h1 class="text-white text-uppercase">To do list:</h1>
             </div>
             <!--^ ADD TASKS -->
             <div class="w-25 align-self-center d-flex justify-content-center">
-                <button class="text-white bg-light-grey rounded" @click="toggleFilter" v-if="!isFilterVisible"><i
-                        class="fas fa-search text-dark"></i></button>
+                <button class="button-hover text-white bg-light-grey rounded" @click="toggleFilter"
+                    v-if="!isFilterVisible"><i class="fas fa-search text-dark"></i></button>
                 <input type="text" placeholder="Add new task to the list" v-model="newTask" @keyup.enter="addNewTask"
                     @keyup.esc="emptyContent">
                 <button class="text-white bg-secondary rounded" @click="emptyContent"><i
@@ -32,29 +32,36 @@ showMe
                 <input class="btn btn-info" type="button" value="Add" @click="addNewTask">
             </div>
             <!--^ FILTER -->
-            <div class="input-group flex-nowrap mt-5 w-50 d-flex justify-content-center align-self-center"
+            <div id="filter" class="input-group flex-nowrap mt-5 w-50 d-flex justify-content-center align-self-center"
                 v-if="isFilterVisible">
-                <span @click="toggleFilter" class="input-group-text bg-danger border-0 text-white"><i
+                <span @click="toggleFilter" class="button-hover input-group-text bg-danger border-0 text-white"><i
                         class="fas fa-times"></i></span>
                 <input type="text" class="form-control" placeholder="Search task.." aria-label="Username"
                     aria-describedby="addon-wrapping" v-model="searchTerm" @keyup.esc="toggleFilter">
-                <span class="input-group-text"><i class="fas fa-search"></i></span>
+                <span class="button-hover input-group-text border-0"><i class="fas fa-search"></i></span>
             </div>
             <!--^ TASKS LIST -->
-            <div class="w-50 align-self-center d-flex">
-                <ul class="list-group w-100 py-5">
-                    <li class="text-white task padding-list list-group-item d-flex justify-content-between"
+            <div class="w-50 align-self-center d-flex" v-if="dailyTasks.length">
+                <ul class="list-group w-100 my-5">
+                    <!--? v-on:dbclick PER METTERE IL COLORE VERDE E LA SCRITTA CON IL DOPPIO CLICK SUL LI -->
+                    <li class=" bg-light-black text-white task padding-list list-group-item d-flex justify-content-between"
+                        @dblclick="taskStatus(index)" :class="isDone(index) ? 'done' : ''"
                         v-for="(task, index) in dailyTasks" v-if="showMe(task.text)">
                         <input class="form-check-input text-white" type="checkbox" value="" aria-label="...">
                         {{ index+1 }}) {{ task.text }}.
-                        <!-- 
-                        <span class="text-uppercase font-weight-bold color-light-green">Task done <i
-                                class="fas fa-check"></i></span> -->
-                        <button type="button" class="btn-close" aria-label="Close" @click="deleteTask(index)">
+
+                        <span :class="isDone(index) ? 'd-inline-block' : 'd-none'"
+                            class="text-uppercase font-weight-bold color-light-green">Task done <i
+                                class="fas fa-check"></i></span>
+                        <button type="button" class="btn-close button-hover" aria-label="Close"
+                            @click="deleteTask(index)">
                             <i class="fas fa-times text-white"></i>
                         </button>
                     </li>
                 </ul>
+            </div>
+            <div class="align-self-center d-flex bg-light-black my-5" v-if="!dailyTasks.length">
+                <h1 class="text-uppercase text-success">There are no more tasks to do. </h1>
             </div>
         </div>
         <!--^ TASKS DONE/UNDONE COUNTER -->

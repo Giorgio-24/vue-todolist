@@ -15,7 +15,6 @@ button{
 }
 
 li.task{
-    background-color: rgba(0,0,0,0.3);
     border: 3px solid black;
 }
 
@@ -37,4 +36,14 @@ li.task{
 
 .bg-green{
     background-color: rgba(0,255,0,0.3);
+}
+
+.button-hover:hover{
+    cursor: pointer;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0 0);
+}
+
+.done{
+    color: #01ff20;
+    background-color: rgba(0,255,0,0.3); 
 }
