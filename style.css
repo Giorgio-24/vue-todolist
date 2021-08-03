@@ -1,27 +1,15 @@
-
-body{
-    background-image: url(https://hips.hearstapps.com/cit.h-cdn.co/assets/17/40/1507300007-phi-phi-island-info-mare-thailandia.jpg);
-    background-repeat: repeat-y;
-    background-size: 100%;
-}
-
+/*= UTILITIES */
+/*? GENERALS */
 button{
     border: 0px;
-    background-color: rgba(0,0,0,0.3);
 }
 
-.padding-list{
-    padding-left: 35px;
-}
-
-li.task{
-    border: 3px solid black;
-}
-
+/*? COLORS */
 .color-light-green{
     color: #01ff20;
 }
 
+/*? BG-COLORS */
 .bg-color-red{
     background-color: #be1823;
 }
@@ -38,12 +26,34 @@ li.task{
     background-color: rgba(0,255,0,0.3);
 }
 
-.button-hover:hover{
-    cursor: pointer;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0 0);
+/*= BODY */
+body{
+    background-image: url(https://hips.hearstapps.com/cit.h-cdn.co/assets/17/40/1507300007-phi-phi-island-info-mare-thailandia.jpg);
+    background-repeat: repeat-y;
+    background-size: 100%;
+}
+/*? TASKS-LIST */
+.padding-list{
+    padding-left: 35px;
+}
+
+li.task{
+    border: 3px solid black;
 }
 
 .done{
     color: #01ff20;
     background-color: rgba(0,255,0,0.3); 
+}
+
+#close-button{
+    height: 25px;
+    background-color: rgba(0,0,0,0.3);
+}
+
+/*= EFFECTS */
+/*? HOVERS */
+.button-hover:hover{
+    cursor: pointer;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.2) 0 0);
 }

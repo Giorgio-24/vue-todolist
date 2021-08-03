@@ -44,7 +44,7 @@ showMe
             <div class="w-50 align-self-center d-flex" v-if="dailyTasks.length">
                 <ul class="list-group w-100 my-5">
                     <!--? v-on:dbclick PER METTERE IL COLORE VERDE E LA SCRITTA CON IL DOPPIO CLICK SUL LI -->
-                    <li class=" bg-light-black text-white task padding-list list-group-item d-flex justify-content-between"
+                    <li class=" bg-light-black text-white task padding-list list-group-item d-flex justify-content-between align-items-center single-task"
                         @dblclick="taskStatus(index)" :class="isDone(index) ? 'done' : ''"
                         v-for="(task, index) in dailyTasks" v-if="showMe(task.text)">
                         <input class="form-check-input text-white" type="checkbox" value="" aria-label="...">
@@ -53,7 +53,7 @@ showMe
                         <span :class="isDone(index) ? 'd-inline-block' : 'd-none'"
                             class="text-uppercase font-weight-bold color-light-green">Task done <i
                                 class="fas fa-check"></i></span>
-                        <button type="button" class="btn-close button-hover" aria-label="Close"
+                        <button id="close-button" type="button" class="btn-close button-hover" aria-label="Close"
                             @click="deleteTask(index)">
                             <i class="fas fa-times text-white"></i>
                         </button>
@@ -66,9 +66,11 @@ showMe
         </div>
         <!--^ TASKS DONE/UNDONE COUNTER -->
         <div class="text-white text-center h4">
-            <div class="d-inline-block mx-5 bg-light-black">Accomplished tasks number: {{ accomplishedTasksNumber }}.
+            <div class="d-inline-block mx-sm-5 bg-light-black my-2">Accomplished tasks number: {{
+                accomplishedTasksNumber
+                }}.
             </div>
-            <div class="d-inline-block bg-light-black">Unaccomplished tasks number: {{ dailyTasks.length }}.</div>
+            <div class="d-inline-block bg-light-black my-2">Unaccomplished tasks number: {{ dailyTasks.length }}.</div>
         </div>
     </div>
     <script src="./script.js"></script>
