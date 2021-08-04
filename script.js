@@ -1,3 +1,13 @@
+window.addEventListener('scroll', () => {
+    const scrollButton = document.getElementById('scroll-button');
+
+    if (window.scrollY > 0) {
+        scrollButton.classList.remove('d-none');
+    } else {
+        scrollButton.classList.add('d-none');
+    }
+}, true);//^SHOW THE BOTTOM RIGHT BUTTON ONLY WHEN YOU SCROLL THE PAGE.
+
 Vue.config.devtools = true;
 
 var root = new Vue(
@@ -16,6 +26,8 @@ var root = new Vue(
             searchTerm: '',
             isFilterVisible: false,
             isTaskDone: false,
+            areOptionsVisible: false,
+            wantToReset: false,
         },
         methods: {
             addNewTask() {
@@ -24,8 +36,10 @@ Please try again.`);
                 this.newTask = "";
             },
             deleteTask(i) {
-                this.dailyTasks.splice(i, 1);
-                this.accomplishedTasksNumber = this.accomplishedTasksNumber + 1;
+                if (this.dailyTasks[i].done === true) {
+                    this.accomplishedTasksNumber = this.accomplishedTasksNumber + 1;
+                }
+                const ele = this.dailyTasks.splice(i, 1);
             },
             emptyContent() {
                 this.newTask = "";
@@ -40,6 +54,17 @@ Please try again.`);
                 this.isFilterVisible = !this.isFilterVisible;
                 this.searchTerm = '';
             },
+            toggleOptions() {
+                this.areOptionsVisible = !this.areOptionsVisible;
+            },
+            toggleReset() {
+                if (this.dailyTasks.length) {
+                    this.wantToReset = !this.wantToReset;
+                } else {
+                    this.wantToReset = false;
+                }
+
+            },
             taskStatus(index) {
                 const taskStatus = this.dailyTasks.map((task, taskIndex) => {
                     if (taskIndex === index) {
@@ -51,6 +76,36 @@ Please try again.`);
             isDone(index) {
                 return this.dailyTasks[index].done;
             },
+            allTasksDone() {
+                if (!this.dailyTasks.length) {
+                    this.areOptionsVisible = !this.areOptionsVisible;
+                }
+                const taskStatus = this.dailyTasks.map((task) => {
+                    task.done = true;
 
+                    return task;
+                })
+            },
+            allTasksToDo() {
+                if (!this.dailyTasks.length) {
+                    this.areOptionsVisible = !this.areOptionsVisible;
+                }
+                const taskStatus = this.dailyTasks.map((task) => {
+                    task.done = false;
+
+                    return task;
+                })
+            },
+            eliminateAllTasks() {
+                this.dailyTasks = [];
+                this.areOptionsVisible = !this.areOptionsVisible;
+                this.wantToReset = !this.wantToReset;
+            },
+            resetListAndAccomplish() {
+                this.accomplishedTasksNumber = this.accomplishedTasksNumber + this.dailyTasks.length; //^IT HAS TO BE BEFORE WE RESET THE ARRAY
+                this.dailyTasks = [];
+                this.areOptionsVisible = !this.areOptionsVisible;
+                this.wantToReset = !this.wantToReset;
+            },
         },
     });
