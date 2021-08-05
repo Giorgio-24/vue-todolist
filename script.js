@@ -18,7 +18,7 @@ var root = new Vue(
                 { text: 'Take a shower', done: false, },
                 { text: 'Have breakfast', done: false, },
                 { text: 'Brush your theet', done: false, },
-                { text: 'Get dressed', done: false, },
+                { text: 'Get dressed', done: false },
             ],
             newTask: '',
             accomplishedTasksNumber: 0,
