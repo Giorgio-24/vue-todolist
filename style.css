@@ -78,7 +78,7 @@ li.task{
     background-color: rgba(0,255,0,0.3); 
 }
 
-#close-button{
+.close-button{
     height: 25px;
     background-color: rgba(0,0,0,0.3);
 }
