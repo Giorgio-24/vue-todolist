@@ -72,15 +72,25 @@
             <div class="w-50 align-self-center d-flex" v-if="dailyTasks.length">
                 <ul class="list-group w-100 my-5">
                     <!--? v-on:dblclick PER METTERE IL COLORE VERDE E LA SCRITTA CON IL DOPPIO CLICK SUL LI -->
-                    <li class=" bg-light-black text-white task padding-list list-group-item d-flex justify-content-between align-items-center single-task"
-                        @dblclick="taskStatus(index)" :class="isDone(index) ? 'done' : ''"
-                        v-for="(task, index) in dailyTasks" v-if="showMe(task.text)">
-                        <input class="form-check-input text-white" type="checkbox" value="" aria-label="...">
-                        {{ index+1 }}) {{ task.text }}.
-                        <span :class="isDone(index) ? 'd-inline-block' : 'd-none'"
-                            class="text-uppercase font-weight-bold color-light-green">Task done <i
-                                class="fas fa-check"></i></span>
-                        <button type="button" class="close-button btn-close button-hover" aria-label="Close"
+                    <li class=" bg-light-black text-white task d-flex justify-content-between align-items-center single-task"
+                        :class="isDone(index) ? 'done' : ''" v-for="(task, index) in dailyTasks"
+                        v-if="showMe(task.text)">
+                        <div class="text-white text-left p-3 w-100 d-flex justify-content-between align-items-center"
+                            @click="moblieTaskStatus(index)" @dblclick="taskStatus(index)">
+                            <div class="d-flex align-items-center">
+                                <div class="my-check-box bg-white d-inline-block mr-2 position-relative"> <i
+                                        :class="isDone(index) ? 'd-inline-block' : 'd-none'"
+                                        class="fas fa-check color-light-green position-absolute"></i></span></div>{{
+                                index+1 }}) {{
+                                task.text
+                                }}.
+                            </div>
+                            <span :class="isDone(index) ? 'd-inline-block' : 'd-none'"
+                                class="text-uppercase text-center font-weight-bold color-light-green">Task done <i
+                                    class="fas fa-check"></i></span>
+                        </div>
+
+                        <button type="button" class="close-button btn-close button-hover mr-3" aria-label="Close"
                             @click="deleteTask(index)">
                             <i class="fas fa-times text-white"></i>
                         </button>

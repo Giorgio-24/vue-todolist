@@ -67,7 +67,15 @@ Please try again.`);
             },
             taskStatus(index) {
                 const taskStatus = this.dailyTasks.map((task, taskIndex) => {
-                    if (taskIndex === index) {
+                    if (taskIndex === index && window.innerWidth > 1199) {
+                        task.done = !task.done;
+                    }
+                    return task;
+                });
+            },
+            moblieTaskStatus(index) {
+                const taskStatus = this.dailyTasks.map((task, taskIndex) => {
+                    if (taskIndex === index && window.innerWidth < 1200) {
                         task.done = !task.done;
                     }
                     return task;
