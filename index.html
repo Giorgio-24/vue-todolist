@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="it">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -28,9 +28,9 @@
                     v-if="!areOptionsVisible"><i class="fas fa-ellipsis-v"></i></button>
                 <input type="text" placeholder="Add new task to the list" v-model="newTask" @keyup.enter="addNewTask"
                     @keyup.esc="emptyContent">
-                <button id="empty-text-input" class="text-white bg-secondary rounded" @click="emptyContent"><i
-                        class="fas fa-redo-alt"></i></button>
-                <input class="btn btn-info" type="button" value="Add" @click="addNewTask">
+                <button id="empty-text-input" class="text-white bg-secondary rounded d-none d-lg-inline-block "
+                    @click="emptyContent"><i class="fas fa-redo-alt"></i></button>
+                <input class="btn btn-info d-none d-lg-inline-block" type="button" value="Add" @click="addNewTask">
             </div>
 
             <!--^ OPTIONS -->
@@ -76,7 +76,7 @@
                         :class="isDone(index) ? 'done' : ''" v-for="(task, index) in dailyTasks"
                         v-if="showMe(task.text)">
                         <div class="text-white text-left p-3 w-100 d-flex justify-content-between align-items-center"
-                            @click="moblieTaskStatus(index)" @dblclick="taskStatus(index)">
+                            @click="mobileTaskStatus(index)" @dblclick="taskStatus(index)">
                             <div class="d-flex align-items-center">
                                 <div class="my-check-box bg-white d-inline-block mr-2 position-relative"> <i
                                         :class="isDone(index) ? 'd-inline-block' : 'd-none'"
@@ -86,8 +86,8 @@
                                 }}.
                             </div>
                             <span :class="isDone(index) ? 'd-inline-block' : 'd-none'"
-                                class="text-uppercase text-center font-weight-bold color-light-green">Task done <i
-                                    class="fas fa-check"></i></span>
+                                class="text-uppercase text-center font-weight-bold color-light-green"><span
+                                    class="d-none d-md-inline">Task done <i class="fas fa-check"></i></span></span>
                         </div>
 
                         <button type="button" class="close-button btn-close button-hover mr-3" aria-label="Close"
@@ -98,16 +98,22 @@
                 </ul>
             </div>
             <div class="align-self-center d-flex bg-light-black my-5" v-if="!dailyTasks.length">
-                <h1 class="text-uppercase text-success">There are no more tasks to do. </h1>
+                <h1 class="text-uppercase text-success">There are no more tasks<span class="d-none d-sm-inline"> to
+                        do</span>. </h1>
             </div>
         </div>
         <!--^ TASKS DONE/UNDONE COUNTER -->
         <div class="text-white text-center h4">
-            <div class="d-inline-block mx-sm-5 bg-light-black my-2">Accomplished tasks number: {{
+            <div class="mx-sm-5 bg-light-black my-2 d-inline-block">Accomplished <span class="d-none d-lg-inline">tasks
+                    number</span>:
+                {{
                 accomplishedTasksNumber
                 }}.
             </div>
-            <div class="d-inline-block bg-light-black my-2">Unaccomplished tasks number: {{ dailyTasks.length }}.</div>
+            <div class="bg-light-black my-2 d-inline-block">Unaccomplished <span class="d-none d-lg-inline">tasks
+                    number</span>:
+                {{
+                dailyTasks.length }}.</div>
         </div>
         <!--^ GO BACK TO THE TOP OF THE PAGE -->
         <div id="scroll-button" class="d-none">

@@ -73,7 +73,7 @@ Please try again.`);
                     return task;
                 });
             },
-            moblieTaskStatus(index) {
+            mobileTaskStatus(index) {
                 const taskStatus = this.dailyTasks.map((task, taskIndex) => {
                     if (taskIndex === index && window.innerWidth < 1200) {
                         task.done = !task.done;
