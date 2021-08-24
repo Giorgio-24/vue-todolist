@@ -122,6 +122,10 @@ li.task{
     margin: 0 0 10px;
 }
 
+#scroll-button{
+    display: none;
+}
+
 /*= EFFECTS */
 /*? HOVERS */
 .button-hover:hover{
@@ -145,6 +149,12 @@ li.task{
 }
 
 /*= MEDIA QUERIES */
+
+@media screen and (min-width: 576px) {
+    #scroll-button{
+        display: block;
+    }
+}
 
 @media screen and (min-width: 992px) {
     

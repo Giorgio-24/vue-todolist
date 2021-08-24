@@ -2,9 +2,9 @@ window.addEventListener('scroll', () => {
     const scrollButton = document.getElementById('scroll-button');
 
     if (window.scrollY > 0) {
-        scrollButton.classList.remove('d-none');
+        scrollButton.classList.remove('d-sm-none');
     } else {
-        scrollButton.classList.add('d-none');
+        scrollButton.classList.add('d-sm-none');
     }
 }, true);//^SHOW THE BOTTOM RIGHT BUTTON ONLY WHEN YOU SCROLL THE PAGE.
 
